@@ -588,6 +588,16 @@ public class SlidingMenu extends RelativeLayout {
 		mViewBehind.setWidthOffset(i);
 	}
 
+    public void setRightBehindOffset(int offset) {
+        mViewBehind.setSecondaryWidthOffset(offset);
+    }
+    
+    public void setRightBehindOffsetRes(int resID) {
+        int i = (int) getContext().getResources().getDimension(resID);
+        setRightBehindOffset(i);
+    }
+
+
 	/**
 	 * Sets the behind offset.
 	 *
@@ -598,6 +608,31 @@ public class SlidingMenu extends RelativeLayout {
 		int i = (int) getContext().getResources().getDimension(resID);
 		setBehindOffset(i);
 	}
+	
+
+    @SuppressWarnings("deprecation")
+    public void setRightWidth(int i) {
+        int width;
+        Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
+                .getDefaultDisplay();
+        try {
+            Class<?> cls = Display.class;
+            Class<?>[] parameterTypes = {Point.class};
+            Point parameter = new Point();
+            Method method = cls.getMethod("getSize", parameterTypes);
+            method.invoke(display, parameter);
+            width = parameter.x;
+        } catch (Exception e) {
+            width = display.getWidth();
+        }
+        setRightBehindOffset(width-i);
+    }
+
+    public void setRightWidthRes(int res) {
+        int i = (int) getContext().getResources().getDimension(res);
+        setRightWidth(i);
+    }
+
 
 	/**
 	 * Sets the above offset.
