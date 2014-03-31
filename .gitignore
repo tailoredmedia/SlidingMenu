@@ -22,3 +22,4 @@ target/
 *.iml
 
 local.properties
+/bin
