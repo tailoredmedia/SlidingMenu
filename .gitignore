@@ -24,3 +24,5 @@ target/
 local.properties
 /bin
 library/build
+library/.classpath
+library/.settings/
