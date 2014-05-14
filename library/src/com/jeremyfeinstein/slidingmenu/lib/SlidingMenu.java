@@ -489,9 +489,13 @@ public class SlidingMenu extends RelativeLayout {
 	 *
 	 * @param animate true to animate the transition, false to ignore animation
 	 */
-	public void showMenu(boolean animate) {
-		mViewAbove.setCurrentItem(0, animate);
-	}
+    public void showMenu(boolean animate) {
+        mViewAbove.setCurrentItem(0, animate);
+    }
+    
+    public void showMenuSecondary(boolean animate) {
+        mViewAbove.setCurrentItem(2, animate);
+    }
 
 	/**
 	 * Opens the menu and shows the secondary menu view. Will default to the regular menu
@@ -523,29 +527,40 @@ public class SlidingMenu extends RelativeLayout {
 	 *
 	 * @param animate true to animate the transition, false to ignore animation
 	 */
-	public void showContent(boolean animate) {
-		mViewAbove.setCurrentItem(1, animate);
-	}
+    public void showContent(boolean animate) {
+        mViewAbove.setCurrentItem(1, animate);
+    }
 
 	/**
 	 * Toggle the SlidingMenu. If it is open, it will be closed, and vice versa.
 	 */
-	public void toggle() {
-		toggle(true);
-	}
+    public void toggle() {
+        toggle(true);
+    }
+    public void toggleSecondary() {
+        toggleSecondary(true);
+    }
 
 	/**
 	 * Toggle the SlidingMenu. If it is open, it will be closed, and vice versa.
 	 *
 	 * @param animate true to animate the transition, false to ignore animation
 	 */
-	public void toggle(boolean animate) {
-		if (isMenuShowing()) {
-			showContent(animate);
-		} else {
-			showMenu(animate);
-		}
-	}
+    public void toggle(boolean animate) {
+        if (isMenuShowing()) {
+            showContent(animate);
+        } else {
+            showMenu(animate);
+        }
+    }
+    public void toggleSecondary(boolean animate) {
+        if (isMenuShowing()) {
+            showContent(animate);
+        } else {
+            showMenuSecondary(animate);
+        }
+    }
+    
 
 	/**
 	 * Checks if is the behind view showing.
